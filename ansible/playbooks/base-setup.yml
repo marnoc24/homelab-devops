@@ -1,0 +1,104 @@
+---
+# Base Server Setup
+# Configures Ubuntu server with essential packages, firewall, and security tools
+#
+# Usage: ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/base-setup.yml
+
+- name: Base Server Configuration
+  hosts: homelab
+  become: true
+
+  vars:
+    packages_to_install:
+      - curl
+      - wget
+      - vim
+      - htop
+      - net-tools
+      - unzip
+      - jq
+      - tmux
+      - tree
+      - ncdu
+      - git
+      - fail2ban
+      - ufw
+      - ca-certificates
+      - gnupg
+      - lsb-release
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
+        autoremove: yes
+
+    - name: Install essential packages
+      apt:
+        name: "{{ packages_to_install }}"
+        state: present
+
+    - name: Set timezone
+      timezone:
+        name: "{{ timezone }}"
+
+    - name: UFW - Allow SSH
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+        comment: 'SSH access'
+
+    - name: UFW - Allow HTTP from local network
+      ufw:
+        rule: allow
+        src: 10.0.0.0/24
+        port: '80'
+        proto: tcp
+        comment: 'HTTP local'
+
+    - name: UFW - Allow HTTPS from local network
+      ufw:
+        rule: allow
+        src: 10.0.0.0/24
+        port: '443'
+        proto: tcp
+        comment: 'HTTPS local'
+
+    - name: UFW - Enable firewall with default deny
+      ufw:
+        state: enabled
+        default: deny
+        direction: incoming
+
+    - name: Enable and start fail2ban
+      systemd:
+        name: fail2ban
+        enabled: yes
+        state: started
+
+    - name: Set custom MOTD
+      copy:
+        content: |
+          ================================================
+           HOMELAB - Ubuntu Server
+           IP: 10.0.0.10
+           Managed by: Ansible
+           Configured: {{ ansible_date_time.date }}
+          ================================================
+        dest: /etc/motd
+        mode: '0644'
+
+    - name: Display system info
+      debug:
+        msg:
+          - "System: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Kernel: {{ ansible_kernel }}"
+          - "CPU: {{ ansible_processor_vcpus }} cores"
+          - "Memory: {{ (ansible_memtotal_mb / 1024) | round(1) }} GB"
+          - "Hostname: {{ ansible_hostname }}"
