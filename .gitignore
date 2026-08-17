@@ -1,0 +1,50 @@
+# ========================
+# SEKRETY - NIGDY nie commituj!
+# ========================
+.env
+*.pem
+*.key
+*secret*
+*password*
+credentials.yml
+
+# ========================
+# Terraform
+# ========================
+# Pliki stanu - zawierają wrażliwe dane
+*.tfstate
+*.tfstate.*
+# Folder z pobranymi providerami
+.terraform/
+# Pliki z wartościami zmiennych (mogą mieć hasła)
+*.tfvars
+!*.tfvars.example
+# Crash logi
+crash.log
+crash.*.log
+
+# ========================
+# Ansible
+# ========================
+*.retry
+
+# ========================
+# System operacyjny
+# ========================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ========================
+# Edytory kodu
+# ========================
+.vscode/
+.idea/
+
+# ========================
+# Python (ansible używa)
+# ========================
+__pycache__/
+*.pyc
