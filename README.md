@@ -28,7 +28,6 @@
 
 ## 🏗️ Architecture
 
-> 🚧 **Diagram coming soon** — will be created with draw.io
 
 <!--
 Planned architecture diagram will show:
