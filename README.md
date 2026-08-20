@@ -118,7 +118,6 @@ homelab-devops/
 
 ### 🚧 In Progress / Planned
 
-- [ ] Architecture diagram in draw.io
 - [ ] Terraform infrastructure on Microsoft Azure
 - [ ] GitHub Actions CI/CD pipeline (linting, validation)
 - [ ] WireGuard VPN for seamless remote access
