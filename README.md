@@ -207,11 +207,20 @@ ssh -p 2222 \
 
 ## 📸 Screenshots
 
-- **Grafana System Metrics (Node Exporter Full - ID 1860):** `docs/screenshots/01-grafana-node-exporter.jpg`
-- **Grafana Container Metrics (cAdvisor - ID 14282):** `docs/screenshots/02-grafana-cadvisor.jpg`
-- **Prometheus Scrape Targets:** `docs/screenshots/03-prometheus-targets.jpg`
-- **Uptime Kuma Status Dashboard:** `docs/screenshots/04-uptime-kuma.jpg`
-- **Portainer Container Management:** `docs/screenshots/05-portainer.jpg`
+### System Metrics Dashboard (Grafana - Node Exporter Full)
+![Grafana System Metrics](docs/screenshots/01-grafana-node-exporter.jpg)
+
+### Container Metrics Dashboard (Grafana - cAdvisor)
+![Grafana Container Metrics](docs/screenshots/02-grafana-cadvisor.jpg)
+
+### Prometheus Scrape Targets
+![Prometheus Targets](docs/screenshots/03-prometheus-targets.jpg)
+
+### Uptime Monitoring (Uptime Kuma)
+![Uptime Kuma Dashboard](docs/screenshots/04-uptime-kuma.jpg)
+
+### Container Management Interface (Portainer)
+![Portainer Interface](docs/screenshots/05-portainer.jpg)
 
 ---
 
@@ -226,7 +235,7 @@ ssh -p 2222 \
 ---
 
 ## 📜 Certifications & Learning Path
-- ⏳ **In Progress:** Microsoft AZ-900 (Azure Fundamentals) — Target: September 2025
+- ⏳ **In Progress:** Microsoft AZ-900 (Azure Fundamentals) — Target: September 2026
 - 🎯 **Next Steps:** Microsoft AZ-104 (Azure Administrator) & HashiCorp Certified: Terraform Associate
 
 ---
@@ -237,5 +246,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 
 ## 👤 Author
-**Marcin Nocoń**
+**Marcin Nocuń**
 - GitHub: [@marnoc24](https://github.com/marnoc24)
