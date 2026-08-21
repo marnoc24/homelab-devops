@@ -1,35 +1,27 @@
-```
-```
-
-````
-![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=for-the-badge&logo=ansible&logoColor=white)
+![Ansible](https://img.shields.io/badge/Ansible-E0393E?style=for-the-badge&logo=ansible&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
-![Azure](https://img.shields.io/badge/Microsoft_Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=for-the-badge&logo=terraform&logoColor=white)
+![Azure](https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=for-the-badge&logo=grafana&logoColor=white)
-![Proxmox](https://img.shields.io/badge/Proxmox-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
-![OPNsense](https://img.shields.io/badge/OPNsense-D94F00?style=for-the-badge&logo=opnsense&logoColor=white)
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Proxmox](https://img.shields.io/badge/Proxmox_VE-E57000?style=for-the-badge&logo=proxmox&logoColor=white)
+![OPNsense](https://img.shields.io/badge/OPNsense-D04C27?style=for-the-badge&logo=opnsense&logoColor=white)
+![Linux](https://img.shields.io/badge/Ubuntu_22.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)
 
-# 🏠 Homelab DevOps
+# homelab-devops
 
-> Home laboratory infrastructure demonstrating **Infrastructure as Code**,
-> **containerization**, **monitoring**, and **cloud integration**.
-> Built as a portfolio project for IT internship applications
-> and preparation for **Microsoft AZ-900** certification.
+> **Home Laboratory Infrastructure** demonstrating **Infrastructure as Code**, **Containerization**, **Monitoring**, and **Cloud Integration**.
+> Built as a portfolio project for IT Internship applications and preparation for **Microsoft AZ-900** certification.
 
 ---
 
 ## 🎯 Project Goals
-
-- Build production-like infrastructure for hands-on DevOps/Cloud learning
-- Practice **Infrastructure as Code** (Ansible, Terraform)
-- Implement complete observability stack (metrics + uptime monitoring)
-- Deploy and manage cloud resources on **Microsoft Azure** using Terraform
-- Prepare for **AZ-900** certification
-- Portfolio project showcasing real-world DevOps skills
+- **Infrastructure as Code (IaC):** Automated infrastructure setup using Ansible and Terraform.
+- **Monitoring & Observability:** Production-grade monitoring stack with Prometheus, Grafana, cAdvisor, and Uptime Kuma.
+- **Cloud Integration:** Deploy and manage cloud resources on Microsoft Azure using Terraform.
+- **Security-First Approach:** Segmented network topology, SSH tunneling, and zero direct public exposure.
+- **Portfolio Standard:** Clean, reproducible, and well-documented codebase.
 
 ---
 
@@ -41,22 +33,22 @@
 
 ## 🛠️ Tech Stack
 
-| Category              | Technology                     | Purpose                          |
-|-----------------------|--------------------------------|----------------------------------|
-| **Hypervisor**        | Proxmox VE 8.x                 | Virtualization platform          |
-| **Firewall**          | OPNSense                       | Network security, routing, NAT   |
-| **OS**                | Ubuntu Server 22.04 LTS        | Container host                   |
-| **Automation**        | Ansible                        | Configuration management (IaC)   |
-| **Cloud IaC**         | Terraform                      | Cloud infrastructure provisioning|
-| **Cloud Provider**    | Microsoft Azure                | Public cloud (VMs, VNet, NSG)   |
-| **Containers**        | Docker + Docker Compose        | Application containerization     |
-| **Metrics**           | Prometheus                     | Time-series database (TSDB)      |
-| **Visualization**     | Grafana                        | Dashboards and alerting          |
-| **System Metrics**    | Node Exporter                  | OS-level metrics collection      |
-| **Container Metrics** | cAdvisor                       | Container-level metrics          |
-| **Uptime**            | Uptime Kuma                    | Service availability monitoring  |
-| **Docker UI**         | Portainer                      | Container management interface   |
-| **VCS**               | Git + GitHub                   | Version control                  |
+| Category | Technology | Purpose |
+|---|---|---|
+| **Hypervisor** | Proxmox VE 8.x | Virtualization platform |
+| **Firewall / Router** | OPNsense | Network security, routing, NAT |
+| **Target OS** | Ubuntu Server 22.04 LTS | Base OS for VMs |
+| **Automation** | Ansible | Configuration management (IaC) |
+| **Cloud Provisioning** | Terraform | Cloud infrastructure provisioning |
+| **Cloud Provider** | Microsoft Azure | Cloud platform (VM, VNet, NSG) |
+| **Containerization** | Docker & Docker Compose | Application containerization |
+| **Metrics Collector** | Prometheus | Time-series metrics collection |
+| **Visualization** | Grafana | System & container dashboards |
+| **Container Metrics** | cAdvisor | Resource usage metrics per container |
+| **Host Metrics** | Node Exporter | Hardware & OS metrics collector |
+| **Uptime Monitoring** | Uptime Kuma | Service availability monitoring |
+| **Container UI** | Portainer | Container management interface |
+| **VCS** | Git & GitHub | Version control |
 
 ---
 
@@ -64,379 +56,186 @@
 
 ```text
 homelab-devops/
+├── .github/workflows/         # CI/CD pipelines
 ├── ansible/
 │   ├── inventory/
-│   │   └── hosts.yml              # Server inventory
+│   │   └── hosts.yml          # Server inventory
 │   └── playbooks/
-│       ├── base-setup.yml         # Base OS configuration
-│       └── docker-install.yml     # Docker CE installation
+│       ├── base-setup.yml     # Base OS configuration
+│       └── docker-install.yml # Docker CE installation
 ├── docker/
-│   ├── docker-compose.yml         # Monitoring stack definition
-│   └── .env.example               # Environment variables template
+│   ├── docker-compose.yml     # Monitoring stack definition
+│   └── .env.example           # Environment variables template
 ├── monitoring/
 │   └── prometheus/
-│       └── prometheus.yml         # Prometheus scrape configuration
+│       └── prometheus.yml     # Prometheus scrape configuration
 ├── terraform/
 │   └── azure/
-│       ├── main.tf                # Azure resources (RG, VNet, NSG, VM)
-│       ├── variables.tf           # Parameterized configuration
-│       ├── outputs.tf             # Public IP and SSH command
-│       └── cloud-init.yml         # Nginx provisioning on boot
+│       ├── main.tf            # Azure resources (RG, VNet, NSG, VM)
+│       ├── variables.tf       # Parameterized configuration
+│       ├── outputs.tf         # Public IP and SSH command outputs
+│       ├── cloud-init.yml     # Nginx provisioning on boot
+│       └── terraform.tfvars.example
 ├── docs/
-│   ├── diagrams/                  # Architecture diagrams (draw.io)
-│   ├── access-guide.md            # SSH tunneling access guide
-│   └── screenshots/               # Portfolio screenshots
-├── scripts/                       # Utility scripts
-├── opnsense/                      # OPNSense documentation
-├── .github/
-│   └── workflows/                 # CI/CD pipelines
+│   ├── diagrams/              # Architecture diagrams
+│   ├── screenshots/           # UI screenshots
+│   └── access-guide.md        # SSH Tunneling instructions
+├── scripts/                   # Utility scripts
+├── opnsense/                  # Firewall documentation
 ├── .gitignore
 ├── LICENSE
 └── README.md
-````
+```
 
 ---
 
 ## ✨ Features
 
 ### ✅ Implemented
-
--  Virtualized infrastructure on Proxmox VE
--  Network segmentation with OPNSense firewall
--  Automated server configuration with Ansible
-  - Package management
-  - UFW firewall rules
-  - Fail2Ban brute-force protection
-  - Timezone and MOTD configuration
--  Automated Docker installation via Ansible
--  Complete monitoring stack in Docker Compose
--  Metrics collection (Prometheus + exporters)
--  Visualization with Grafana (2 dashboards)
--  Uptime monitoring for critical services
--  Container management UI (Portainer)
--  Secure remote access via SSH tunneling
--  All configuration versioned in Git
--  **Cloud infrastructure on Microsoft Azure via Terraform**
-  - Resource Group, VNet, Subnet, NSG, Public IP, Linux VM
-  - Cloud-init automated Nginx provisioning
-  - Full lifecycle management (init → plan → apply → destroy)
-
-### 🚧 In Progress / Planned
-
--  WireGuard VPN for seamless remote access
--  Grafana Loki for centralized logging
--  Alertmanager for Prometheus alerting
--  Backup automation with rclone
--  Kubernetes cluster (k3s) as next iteration
+- **Proxmox VE Virtualization:** Isolated lab environment on physical host.
+- **Network Segmentation:** OPNsense firewall with custom LAN/WAN rules.
+- **Automated Base Setup via Ansible:**
+  - System updating and essential package installation.
+  - UFW firewall configuration with strict defaults.
+  - Fail2ban protection against brute-force attacks.
+  - Custom MOTD and timezone alignment (`Europe/Warsaw`).
+- **Automated Docker Stack Deployment:**
+  - Official Docker CE + Docker Compose plugin via Ansible.
+  - 6-container monitoring stack (`Prometheus`, `Grafana`, `Node Exporter`, `cAdvisor`, `Uptime Kuma`, `Portainer`).
+  - Pre-configured Grafana dashboards for Host and Container metrics.
+- **Cloud Infrastructure via Terraform:**
+  - Fully automated Microsoft Azure deployment (Resource Group, VNet, Subnet, NSG, Public IP, Ubuntu Linux VM).
+  - Cloud-init integration for automatic Nginx web server installation.
+  - Full lifecycle management (`init` -> `plan` -> `apply` -> `destroy`).
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
+- Proxmox VE host or local Ubuntu VM.
+- Ansible 2.15+ installed on control node.
+- Terraform 1.5+ and Azure CLI installed for cloud deployment.
 
-- Proxmox VE with OPNSense and Ubuntu Server VMs
-- SSH access configured with key-based authentication
-- Ansible installed on control node
-
-### 1. Clone the repository
-
-```
-Bash
-```
-
-```
-git clone git@github.com:marnoc24/homelab-devops.git
+### 1. Clone the Repository
+```bash
+git clone https://github.com/marnoc24/homelab-devops.git
 cd homelab-devops
 ```
 
-### 2. Configure inventory
+### 2. Configure Ansible Inventory
+Edit `ansible/inventory/hosts.yml` with your server IP and SSH user credentials.
 
-Edit **`ansible/inventory/hosts.yml`** with your server details.
-
-### 3. Run base setup playbook
-
-```
-Bash
-```
-
-```
+### 3. Run Base Setup Playbook
+```bash
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/base-setup.yml
 ```
 
 ### 4. Install Docker
-
-```
-Bash
-```
-
-```
+```bash
 ansible-playbook -i ansible/inventory/hosts.yml ansible/playbooks/docker-install.yml
 ```
 
-### 5. Deploy monitoring stack
-
-```
-Bash
-```
-
-```
+### 5. Deploy Monitoring Stack
+```bash
 cd docker
 cp .env.example .env
-# Edit .env with your credentials
 docker compose up -d
 ```
-
-### 6. Verify deployment
-
-```
-Bash
-```
-
-```
-docker compose ps
-```
-
-All 6 containers should show status **`Up (healthy)`**.
 
 ---
 
 ## ☁️ Cloud Infrastructure (Terraform & Azure)
 
-The **`terraform/azure/`** module provisions a complete, secure infrastructure
-on Microsoft Azure using a declarative IaC approach. Designed as a hands-on
-learning environment for **AZ-900** preparation.
+Declarative IaC module to provision a temporary, cost-controlled environment in Microsoft Azure.
 
 ### Deployed Resources
-
-| **ResourceDetails**        |                                                 |
-| -------------------------- | ----------------------------------------------- |
-| **Resource Group**         | Logical container in **`switzerlandnorth`**     |
-| **Virtual Network**        | **`10.1.0.0/16`** with subnet **`10.1.1.0/24`** |
-| **Network Security Group** | Inbound rules: SSH (22), HTTP (80) only         |
-| **Public IP**              | Static allocation, Standard SKU                 |
-| **Linux VM**               | **`Standard_D2s_v3`** (2 vCPU, 8 GB RAM)        |
-| **Cloud-init**             | Automatic Nginx installation on first boot      |
+| Resource | Details |
+|---|---|
+| **Resource Group** | Logical container in `polandcentral` |
+| **Virtual Network** | `10.1.0.0/16` with Subnet `10.1.1.0/24` |
+| **Network Security Group** | Inbound rules for SSH (22) and HTTP (80) |
+| **Public IP** | Static allocation, Standard SKU |
+| **Linux VM** | Ubuntu 22.04 LTS (`Standard_B1s` - Free Tier) |
+| **Cloud-Init** | Automatic Nginx installation on first boot |
 
 ### Deploy
+```bash
+cd terraform/azure
+cp terraform.tfvars.example terraform.tfvars
+# Fill in your Azure Subscription ID in terraform.tfvars
 
-```
-Bash
-```
-
-```
-cd terraform/azure/
 terraform init
 terraform plan
-terraform apply -auto-approve
+terraform apply
 ```
 
-### Verify
-
-```
-Bash
-```
-
-```
-curl http://<PUBLIC_IP_FROM_OUTPUTS>
-ssh -i ~/.ssh/azure_homelab azureuser@<PUBLIC_IP_FROM_OUTPUTS>
-```
-
-### Destroy (cost control)
-
-```
-Bash
-```
-
-```
-terraform destroy -auto-approve
+### Destroy (Cost Control)
+```bash
+terraform destroy
 ```
 
 ---
 
-## 🌐 Service Access
+## 🔒 Service Access & Security
 
-Services are **not exposed to the internet** for security reasons.
-Access is provided through **SSH tunneling** via OPNSense.
+Services are not publicly exposed to the Internet. Access is secured using SSH Tunneling via OPNsense.
 
-### Create SSH tunnel
-
-```
-Bash
-```
-
-```
+### Create SSH Tunnel
+```bash
 ssh -p 2222 \
-    -L 3000:10.0.0.10:3000 \
-    -L 9090:10.0.0.10:9090 \
-    -L 3001:10.0.0.10:3001 \
-    -L 9443:10.0.0.10:9443 \
-    -L 8080:10.0.0.10:8080 \
-    user@your-opnsense-address
+  -L 3000:10.0.0.10:3000 \
+  -L 9090:10.0.0.10:9090 \
+  -L 3001:10.0.0.10:3001 \
+  -L 9443:10.0.0.10:9443 \
+  -L 8080:10.0.0.10:8080 \
+  -L 9100:10.0.0.10:9100 \
+  emes@<your-opnsense-ip>
 ```
 
-### Or use SSH config
-
-Add to **`~/.ssh/config`**:
-
-```
-text
-```
-
-```
-Host homelab
-    HostName your-opnsense-address
-    Port 2222
-    User your-username
-    LocalForward 3000 10.0.0.10:3000
-    LocalForward 9090 10.0.0.10:9090
-    LocalForward 3001 10.0.0.10:3001
-    LocalForward 9443 10.0.0.10:9443
-    ServerAliveInterval 60
-```
-
-Then simply: **`ssh homelab`**
-
-### Service URLs (via tunnel)
-
-| **ServiceURLPurpose** |                                                       |                         |
-| --------------------- | ----------------------------------------------------- | ----------------------- |
-| Grafana               | [**http://localhost:3000**](http://localhost:3000/)   | Metrics visualization   |
-| Prometheus            | [**http://localhost:9090**](http://localhost:9090/)   | Metrics query interface |
-| Uptime Kuma           | [**http://localhost:3001**](http://localhost:3001/)   | Service availability    |
-| Portainer             | [**https://localhost:9443**](https://localhost:9443/) | Docker management       |
-| cAdvisor              | [**http://localhost:8080**](http://localhost:8080/)   | Container metrics UI    |
-| Node Exporter         | [**http://localhost:9100**](http://localhost:9100/)   | System metrics endpoint |
+### Service URLs (via Tunnel)
+| Service | URL | Purpose |
+|---|---|---|
+| **Grafana** | `http://localhost:3000` | Metrics visualization |
+| **Prometheus** | `http://localhost:9090` | Time-series query engine |
+| **Uptime Kuma** | `http://localhost:3001` | Status monitoring |
+| **Portainer** | `https://localhost:9443` | Container management |
+| **cAdvisor** | `http://localhost:8080` | Container resource metrics |
+| **Node Exporter** | `http://localhost:9100` | Host metrics endpoint |
 
 ---
 
 ## 📸 Screenshots
 
-### System Metrics Dashboard (Grafana - Node Exporter Full)
-
-Comprehensive system dashboard displaying CPU pressure, memory usage,
-disk space, network traffic, and system load. Uses community dashboard
-[**ID 1860**](https://grafana.com/grafana/dashboards/1860).
-
-### Container Metrics Dashboard (Grafana - cAdvisor)
-
-Per-container resource monitoring showing CPU usage, memory allocation,
-and network I/O for all running containers. Uses dashboard
-[**ID 14282**](https://grafana.com/grafana/dashboards/14282).
-
-### Prometheus Scrape Targets
-
-All monitoring endpoints are healthy and being scraped every 15 seconds:
-
-- **cadvisor** — Docker container metrics
-- **node-exporter** — Host system metrics
-- **prometheus** — Self-monitoring
-
-### Uptime Monitoring (Uptime Kuma)
-
-Availability monitoring dashboard tracking critical services with
-100% uptime, including GitHub repository, OPNSense router,
-Google DNS, and internal monitoring services.
-
-### Container Management (Portainer)
-
-Web-based Docker management interface showing all 6 containers
-running healthy in the monitoring stack.
+- **Grafana System Metrics (Node Exporter Full - ID 1860):** `docs/screenshots/01-grafana-node-exporter.jpg`
+- **Grafana Container Metrics (cAdvisor - ID 14282):** `docs/screenshots/02-grafana-cadvisor.jpg`
+- **Prometheus Scrape Targets:** `docs/screenshots/03-prometheus-targets.jpg`
+- **Uptime Kuma Status Dashboard:** `docs/screenshots/04-uptime-kuma.jpg`
+- **Portainer Container Management:** `docs/screenshots/05-portainer.jpg`
 
 ---
 
-## 🔐 Security Considerations
+## 🧠 Learning Outcomes & DevOps Practices
 
-- **No public exposure** — homelab services accessible only via SSH tunnel
-- **Key-based SSH authentication** (password auth disabled)
-- **UFW firewall** with default deny + explicit allow rules
-- **Fail2Ban** protection against SSH brute-force attempts
-- **Segmented network** — homelab isolated behind OPNSense
-- **Azure NSG** — cloud VM exposes only ports 22 and 80
-- **Environment variables** in **`.env`** (excluded from Git via **`.gitignore`**)
-- **No hardcoded credentials** in configuration files
-- **Ephemeral cloud infrastructure** — destroyed after use to minimize attack surface
+- **Infrastructure as Code (IaC):** Modular Ansible playbooks and Terraform code for full system lifecycle management.
+- **Cloud Administration (Azure):** VNet design, NSG security rules, Public IP management, and cloud-init auto-provisioning.
+- **Containerization & Orchestration:** Multi-container environments managed via Docker Compose with volume persistence and custom network bridges.
+- **Observability:** Metrics scraping architecture, target configuration, and dashboard management in Grafana.
+- **Linux Security:** User management, sudoers configuration, UFW rules, Fail2ban integration, and key-based SSH authentication.
 
 ---
 
-## 📚 Learning Outcomes
-
-Through this project I've gained hands-on experience with:
-
-### DevOps Practices
-
-- **Infrastructure as Code** (IaC) with Ansible playbooks and Terraform
-- **Idempotent automation** — safe to run playbooks multiple times
-- **Declarative cloud provisioning** — Terraform plan/apply/destroy lifecycle
-- **Version control** with Git (Conventional Commits)
-- **Documentation-first approach** — READMEs, diagrams, comments
-
-### Cloud Computing (Azure)
-
-- **Resource Groups** — logical lifecycle management
-- **Virtual Networks & Subnets** — cloud network segmentation
-- **Network Security Groups** — stateful firewall rules
-- **Virtual Machines & SKUs** — compute sizing and capacity planning
-- **Azure Regions & Availability** — data residency and latency considerations
-- **Azure Policy** — governance and compliance constraints
-- **Cost Management** — ephemeral infrastructure to control spending
-
-### Containerization
-
-- **Docker fundamentals** — images, containers, volumes, networks
-- **Docker Compose** — multi-container application orchestration
-- **Container networking** — service discovery via container names
-- **Persistent storage** — named volumes for data retention
-
-### Monitoring & Observability
-
-- **Metrics collection** — Prometheus scrape configuration
-- **Time-series databases** — data retention, storage optimization
-- **Dashboarding** — Grafana panels, queries, variables
-- **Alerting concepts** — health checks, uptime tracking
-
-### Networking
-
-- **Network segmentation** — separating homelab from home network
-- **Firewall configuration** — OPNSense rules, UFW on host, Azure NSG
-- **NAT and port forwarding** — SSH jump host pattern
-- **SSH tunneling** — secure remote access without VPN
-
-### Linux Administration
-
-- **User management** — sudo, groups (docker group)
-- **Service management** — systemd
-- **Package management** — apt, package repositories
-- **File permissions** and system security hardening
-
----
-
-## 🎓 Certifications & Learning Path
-
-- 🎯 **In Progress:** Microsoft AZ-900 (Azure Fundamentals) — September 2025
-- 📖 **Next:** Microsoft AZ-104 (Azure Administrator)
-- 📖 **Future:** HashiCorp Terraform Associate
-
----
-
-## 🔗 Related Projects
-
-- [**homelab-infrastructure**](https://github.com/marnoc24/homelab-infrastructure) — Previous iteration (archived)
+## 📜 Certifications & Learning Path
+- ⏳ **In Progress:** Microsoft AZ-900 (Azure Fundamentals) — Target: September 2025
+- 🎯 **Next Steps:** Microsoft AZ-104 (Azure Administrator) & HashiCorp Certified: Terraform Associate
 
 ---
 
 ## 📄 License
-
-This project is licensed under the MIT License — see the [**LICENSE**](https://arena.ai/c/LICENSE) file for details.
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
 ## 👤 Author
-
-**Marcin Nocuń**
-
-- GitHub: [**@marnoc24**](https://github.com/marnoc24)
-
----
-
-⭐ **If this project helped you learn, consider giving it a star!**
+**Marcin Nocoń**
+- GitHub: [@marnoc24](https://github.com/marnoc24)
