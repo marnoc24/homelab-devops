@@ -152,11 +152,11 @@ Declarative IaC module to provision a temporary, cost-controlled environment in 
 ### Deployed Resources
 | Resource | Details |
 |---|---|
-| **Resource Group** | Logical container in `polandcentral` |
+| **Resource Group** | Logical container in `switzerlandnorth` |
 | **Virtual Network** | `10.1.0.0/16` with Subnet `10.1.1.0/24` |
 | **Network Security Group** | Inbound rules for SSH (22) and HTTP (80) |
 | **Public IP** | Static allocation, Standard SKU |
-| **Linux VM** | Ubuntu 22.04 LTS (`Standard_B1s` - Free Tier) |
+| **Linux VM** | Ubuntu 22.04 LTS (`Standard_D2s_v3`) |
 | **Cloud-Init** | Automatic Nginx installation on first boot |
 
 ### Deploy
@@ -222,6 +222,13 @@ ssh -p 2222 \
 ### Container Management Interface (Portainer)
 ![Portainer Interface](docs/screenshots/portainer-containers.jpg)
 
+### Azure VM — Nginx via Terraform + Cloud-init
+
+![Azure Terraform Nginx](docs/screenshots/azure-terraform-nginx.png)
+
+Ubuntu VM (`Standard_D2s_v3`) deployed in Azure (`switzerlandnorth`) using Terraform.
+Nginx was installed automatically on first boot via cloud-init. The page is served
+from a public IP behind an NSG allowing only ports 22 and 80.
 ---
 
 ## 🧠 Learning Outcomes & DevOps Practices
