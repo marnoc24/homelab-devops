@@ -208,19 +208,19 @@ ssh -p 2222 \
 ## 📸 Screenshots
 
 ### System Metrics Dashboard (Grafana - Node Exporter Full)
-![Grafana System Metrics](docs/screenshots/01-grafana-node-exporter.jpg)
+![Grafana System Metrics](docs/screenshots/grafana-node-exporter.jpg)
 
 ### Container Metrics Dashboard (Grafana - cAdvisor)
-![Grafana Container Metrics](docs/screenshots/02-grafana-cadvisor.jpg)
+![Grafana Container Metrics](docs/screenshots/grafana-cadvisor.jpg)
 
 ### Prometheus Scrape Targets
-![Prometheus Targets](docs/screenshots/03-prometheus-targets.jpg)
+![Prometheus Targets](docs/screenshots/prometheus-targets.jpg)
 
 ### Uptime Monitoring (Uptime Kuma)
-![Uptime Kuma Dashboard](docs/screenshots/04-uptime-kuma.jpg)
+![Uptime Kuma Dashboard](docs/screenshots/uptime-kuma.jpg)
 
 ### Container Management Interface (Portainer)
-![Portainer Interface](docs/screenshots/05-portainer.jpg)
+![Portainer Interface](docs/screenshots/portainer-containers.jpg)
 
 ---
 
