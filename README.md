@@ -101,12 +101,12 @@ homelab-devops/
   - Custom MOTD and timezone alignment (`Europe/Warsaw`).
 - **Automated Docker Stack Deployment:**
   - Official Docker CE + Docker Compose plugin via Ansible.
-  - 6-container monitoring stack (`Prometheus`, `Grafana`, `Node Exporter`, `cAdvisor`, `Uptime Kuma`, `Portainer`).
+  - 6-container monitoring stack (`Prometheus`,`Grafana`,`Node Exporter`,`cAdvisor`,`Uptime Kuma`,`Portainer`).
   - Pre-configured Grafana dashboards for Host and Container metrics.
 - **Cloud Infrastructure via Terraform:**
   - Fully automated Microsoft Azure deployment (Resource Group, VNet, Subnet, NSG, Public IP, Ubuntu Linux VM).
   - Cloud-init integration for automatic Nginx web server installation.
-  - Full lifecycle management (`init` -> `plan` -> `apply` -> `destroy`).
+  - Full lifecycle management (`init`->`plan`->`apply`->`destroy`).
 
 ---
 
@@ -124,7 +124,7 @@ cd homelab-devops
 ```
 
 ### 2. Configure Ansible Inventory
-Edit `ansible/inventory/hosts.yml` with your server IP and SSH user credentials.
+Edit`ansible/inventory/hosts.yml`with your server IP and SSH user credentials.
 
 ### 3. Run Base Setup Playbook
 ```bash
@@ -152,8 +152,8 @@ Declarative IaC module to provision a temporary, cost-controlled environment in 
 ### Deployed Resources
 | Resource | Details |
 |---|---|
-| **Resource Group** | Logical container in `switzerlandnorth` |
-| **Virtual Network** | `10.1.0.0/16` with Subnet `10.1.1.0/24` |
+| **Resource Group** | Logical container in`switzerlandnorth`|
+| **Virtual Network** |`10.1.0.0/16`with Subnet`10.1.1.0/24`|
 | **Network Security Group** | Inbound rules for SSH (22) and HTTP (80) |
 | **Public IP** | Static allocation, Standard SKU |
 | **Linux VM** | Ubuntu 22.04 LTS (`Standard_D2s_v3`) |
@@ -196,12 +196,12 @@ ssh -p 2222 \
 ### Service URLs (via Tunnel)
 | Service | URL | Purpose |
 |---|---|---|
-| **Grafana** | `http://localhost:3000` | Metrics visualization |
-| **Prometheus** | `http://localhost:9090` | Time-series query engine |
-| **Uptime Kuma** | `http://localhost:3001` | Status monitoring |
-| **Portainer** | `https://localhost:9443` | Container management |
-| **cAdvisor** | `http://localhost:8080` | Container resource metrics |
-| **Node Exporter** | `http://localhost:9100` | Host metrics endpoint |
+| **Grafana** |`http://localhost:3000`| Metrics visualization |
+| **Prometheus** |`http://localhost:9090`| Time-series query engine |
+| **Uptime Kuma** |`http://localhost:3001`| Status monitoring |
+| **Portainer** |`https://localhost:9443`| Container management |
+| **cAdvisor** |`http://localhost:8080`| Container resource metrics |
+| **Node Exporter** |`http://localhost:9100`| Host metrics endpoint |
 
 ---
 
@@ -248,7 +248,7 @@ from a public IP behind an NSG allowing only ports 22 and 80.
 ---
 
 ## 📄 License
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See`LICENSE`for more information.
 
 ---
 
